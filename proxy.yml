@@ -1,0 +1,66 @@
+proxies:
+  - name: 🇸🇬 DO FB SSL
+    server: 152.42.225.14
+    port: 443
+    type: vmess
+    uuid: 931fe53c-dd90-40b0-bbd8-784efaa54d18
+    alterId: 0
+    cipher: auto
+    tls: true
+    skip-cert-verify: true
+    network: ws
+    servername: edge-ig-mqtt-p4-shv-sin6.facebook.com
+    ws-opts:
+      path: /vmess
+      headers:
+        Host: kangpro86.bandarvpn.cloud
+    udp: true
+  - name: 🇸🇬 geng
+    server: xxx.tokodswara.cloud
+    port: 443
+    type: vmess
+    uuid: 4ca9214d-d6a4-48d9-9d15-935b0e49b204
+    alterId: 0
+    cipher: auto
+    tls: true
+    skip-cert-verify: true
+    network: ws
+    servername: edge-ig-mqtt-p4-shv-sin6.facebook.com
+    ws-opts:
+      path: /vmess-ws
+      headers:
+        Host: xxx.tokodswara.cloud
+    udp: true
+  - name: 🇸🇬 trial mbc
+    server: 91.192.81.174
+    port: 443
+    type: vmess
+    uuid: 2bcf81ca-65af-4f7e-911c-37c33b17f627
+    alterId: 0
+    cipher: auto
+    tls: true
+    skip-cert-verify: true
+    network: ws
+    servername: edge-ig-mqtt-p4-shv-sin6.facebook.com
+    ws-opts:
+      path: /vmess-ws
+      headers:
+        Host: vmess-sg03.gproxy.pro
+    udp: true
+  - name: 🇸🇬 trial
+    server: 81.168.116.38
+    port: 443
+    type: vmess
+    uuid: df291add-7a67-4106-b591-850c042694dc
+    alterId: 0
+    cipher: auto
+    tls: true
+    skip-cert-verify: true
+    network: ws
+    servername: edge-ig-mqtt-p4-shv-sin6.facebook.com
+    ws-opts:
+      path: /vmess-ws
+      headers:
+        Host: vmess-sg05.gproxy.pro
+    udp: true
+
