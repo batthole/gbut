@@ -20,8 +20,8 @@ jobs:
         run: |
           VAR="./sing-box rule-set convert --type adguard"
           
-          curl -Ls https://raw.githubusercontent.com/smokedzn/xiaomi-dns-filter/master/xiaomi_pihole_block.lst -o Xiaomi.txt
-          $VAR --output Xiaomi.srs Xiaomi.txt
+          curl -Ls https://raw.githubusercontent.com/unknownFalleN/xiaomi-dns-blocklist/master/xiaomi_dns_block.lst -o xiaomi-filter.txt
+          $VAR --output xiaomi-filter.srs xiaomi-filter.txt
 
       - name: Clean
         run: |
