@@ -1,0 +1,44 @@
+name: tes
+on:
+  schedule:
+    - cron: '0 */24 * * *'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Get sing-box
+        run: |
+          version="1.11.4"
+          wget https://github.com/SagerNet/sing-box/releases/download/v${version}/sing-box-${version}-linux-amd64.tar.gz
+          tar -xvf *.tar.gz --strip-components=1
+
+      - name: Repack rule-set
+        run: |
+          VAR="./sing-box rule-set convert --type adguard"
+          
+          curl -Ls https://raw.githubusercontent.com/smokedzn/xiaomi-dns-filter/master/xiaomi_pihole_block.lst -o aghome.txt
+          $VAR --output Xiaomi.srs Xiaomi.txt
+
+      - name: Clean
+        run: |
+          rm -rf sing-box *.tar.gz
+          
+      - name: Commit changes
+        shell: bash
+        run: |
+          DATE="$(TZ='Asia/Jakarta' date)"
+          echo ${DATE}
+          git config --global user.name "Salman Wahib"
+          git config --global user.email "sxlmnwb.dev@gmail.com"
+          git add .
+          git commit -am "schedule: repack at ${DATE}"
+      
+      - name: Push changes
+        env:
+          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        run: |
+          git push -f || echo "No changes to commit"
